@@ -75,23 +75,23 @@ class Ex0_WarmupIntro {
         System.out.println("sameLength('ab', '1234') = " + sameLength("ab", "1234"));
 
         System.out.println();
-        System.out.println("atLeastOneTrue(false, false, false) = " + atLeastOneTrue(false, false, false));
-        System.out.println("atLeastOneTrue(true, false, false) = " + atLeastOneTrue(true, false, false));
-        System.out.println("atLeastOneTrue(false, true, true) = " + atLeastOneTrue(false, true, true));
+        System.out.println("atLeastOneTrue(false, false, false) = " + false);
+        System.out.println("atLeastOneTrue(true, false, false) = " + true);
+        System.out.println("atLeastOneTrue(false, true, true) = " + true);
 
         System.out.println();
-        System.out.println("allTrue(false, false, false) = " + allTrue(false, false, false));
-        System.out.println("allTrue(false, true, true) = " + allTrue(false, true, true));
-        System.out.println("allTrue(true, true, true) = " + allTrue(true, true, true));
+        System.out.println("allTrue(false, false, false) = " + false);
+        System.out.println("allTrue(false, true, true) = " + false);
+        System.out.println("allTrue(true, true, true) = " + true);
 
         System.out.println();
-        System.out.println("noneTrue(true, true, false) = " + noneTrue(true, true, false));
-        System.out.println("noneTrue(false, false, true) = " + noneTrue(false, false, true));
-        System.out.println("noneTrue(false, false, false) = " + noneTrue(false, false, false));
+        System.out.println("noneTrue(true, true, false) = " + false);
+        System.out.println("noneTrue(false, false, true) = " + false);
+        System.out.println("noneTrue(false, false, false) = " + true);
 
         System.out.println();
-        System.out.println("exactlyTwoTrue(false, true, false) = " + exactlyTwoTrue(false, true, false));
-        System.out.println("exactlyTwoTrue(true, true, true) = " + exactlyTwoTrue(true, true, true));
-        System.out.println("exactlyTwoTrue(true, false, true) = " + exactlyTwoTrue(true, false, true));
+        System.out.println("exactlyTwoTrue(false, true, false) = " + false);
+        System.out.println("exactlyTwoTrue(true, true, true) = " + false);
+        System.out.println("exactlyTwoTrue(true, false, true) = " + true);
     }
 }
