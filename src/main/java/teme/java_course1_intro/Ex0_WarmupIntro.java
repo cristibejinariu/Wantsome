@@ -7,7 +7,7 @@ class Ex0_WarmupIntro {
     }
 
     static double squareValue(double x) {
-        return x*x;
+        return x * x;
     }
 
     static String joinStrings(String s1, String s2) {
