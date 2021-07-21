@@ -63,7 +63,8 @@ public class Ex0WarmupIntroTest {
     @Test
     @Grade(1)
     public void testIsInInterval() {
-        assertTrue(isInInterval(3, 0, 3));
+        boolean esteSauNu3InInterval = isInInterval(3, 0, 3);
+        assertTrue(esteSauNu3InInterval);
         assertTrue(isInInterval(0, 0, 3));
         assertTrue(isInInterval(1, 0, 3));
         assertFalse(isInInterval(3, 4, 5));
