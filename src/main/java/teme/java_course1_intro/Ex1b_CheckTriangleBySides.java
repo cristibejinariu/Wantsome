@@ -9,9 +9,11 @@ class Ex1b_CheckTriangleBySides {
      */
     static boolean canFormValidTriangle(int side1, int side2, int side3) {
 
-        //TODO: write your logic here, so it returns true/false as needed
-
-        return false; //<--- REPLACE THIS WITH YOUR CODE!
+        if (side1 + side2 > side3 && side1 + side3 > side2 && side2 + side3 > side1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -23,10 +25,11 @@ class Ex1b_CheckTriangleBySides {
      */
     static boolean canFormValidRightAngledTriangle(int side1, int side2, int side3) {
 
-        //TODO: write your logic here, so it returns true/false as needed
-        //HINT: you may also reuse/call here the method 'canFormValidTriangle' (if you fixed that one) to first check the triangle is valid..
-
-        return false; //<--- REPLACE THIS WITH YOUR CODE!
+        if ((side1 + side2 > side3 && side1 + side3 > side2 && side2 + side3 > side1) && (side1*side1 + side2*side2 == side3*side3)){
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
