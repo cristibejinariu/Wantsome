@@ -16,4 +16,7 @@ public class Tiger extends Animal {
     public void eat(String food){
         System.out.println("I am eating: " + food);
     }
+    public String getName() {
+        return this.name;
+    }
 }
