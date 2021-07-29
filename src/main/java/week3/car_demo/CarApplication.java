@@ -1,4 +1,4 @@
-package week3.carDemo;
+package week3.car_demo;
 
 public class CarApplication {
     public static void main(String[] args) {

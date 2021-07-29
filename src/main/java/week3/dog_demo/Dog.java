@@ -1,4 +1,4 @@
-package week3.dogDemo;
+package week3.dog_demo;
 
 public class Dog {
     // fields
