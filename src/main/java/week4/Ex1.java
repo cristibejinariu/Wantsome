@@ -3,7 +3,7 @@ package week4;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Week4ex1 {
+public class Ex1 {
     public static void main(String[] args) {
         List<Integer> grades = new ArrayList<>();
         grades.add(10);

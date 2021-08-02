@@ -2,7 +2,7 @@ package week4;
 
 import java.util.*;
 
-public class Week4ex3 {
+public class Ex3 {
     public static void main(String[] args) {
         List<String> names = new ArrayList<>();
         names.add("Xenia");
