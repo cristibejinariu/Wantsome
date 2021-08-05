@@ -1,33 +1,60 @@
 package teme.java_course4_collections.ex0_word_count;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 class CountingWords {
 
     static List<String> words(String text) {
-        return null; //TODO
+
+        return Arrays.asList(text.split(" "));
+    }
+
+    static List<String> words2(String text) {
+
+        String[] words= text.split( " ");
+        List<String> cuvinte= new ArrayList<>();
+        for(String word:words){
+            cuvinte.add(word);
+
+        }
+        return cuvinte;
     }
 
     static int wordsCount(String text) {
-        return -1; //TODO
+
+        List<String> words = words(text);
+        return words.size();
     }
 
     static Collection<String> sortedWords(String text) {
-        return null; //TODO
+
+        List<String> words = words(text);
+        Collections.sort(words);
+        return words;
     }
 
     static Collection<String> distinctWords(String text) {
-        return null; //TODO
+        return new LinkedHashSet<>(words(text));
     }
 
     static Collection<String> distinctSortedWords(String text) {
-        return null; //TODO
+        return new TreeSet<>(words(text));
     }
 
     static Map<String, Long> wordsUsageCount(String text) {
-        return null; //TODO
+
+        Map<String, Long> wordsCount = new LinkedHashMap<>();
+        List<String> words = words(text);
+        for(String word : words){
+            if(wordsCount.containsKey(word)){
+                long count = wordsCount.get(word);
+                count ++;
+                wordsCount.put(word, count);
+            } else {
+                wordsCount.put(word, 1L);
+            }
+        }
+        return wordsCount;
     }
 
     static Map<String, Long> wordsUsageCountSortedByWord(String text) {
