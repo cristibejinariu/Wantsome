@@ -18,6 +18,7 @@ public class ManipulationIntro extends BaseTestClass {
 
         Assert.assertEquals("https://www.facebook.com/wantsomeiasi", driver.getCurrentUrl());
     }
+
     @Test
     public void sendKeysDemo(){
         driver.get("https://testare-automata.practica.tech/blog/");
