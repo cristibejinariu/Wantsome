@@ -10,7 +10,7 @@ import teme.util.ta_utils.BaseTestClass;
 public class ShopCartTests extends BaseTestClass {
 
     @Test
-    public void addToCart() throws InterruptedException {
+    public void addToCart() {
         driver.get("https://testare-automata.practica.tech/shop/");
         driver.findElement(By.className("category-toggle")).click();
         driver.findElement(By.id("menu-item-509")).click();
