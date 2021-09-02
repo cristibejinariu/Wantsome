@@ -4,12 +4,14 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import teme.util.ta_utils.BaseTestClass;
 
 public class ShopRegisterTests extends BaseTestClass {
 
     @Test
-    public void happyFlow(){
+    public void happyFlow() {
         driver.get("https://testare-automata.practica.tech/shop/");
 
         WebElement regButton = driver.findElement(By.xpath("//div[@class = 'user-wrapper search-user-block']"));
@@ -29,7 +31,7 @@ public class ShopRegisterTests extends BaseTestClass {
     }
 
     @Test
-    public void missingEmail(){
+    public void missingEmail() {
         driver.get("https://testare-automata.practica.tech/shop/");
 
         WebElement regButton = driver.findElement(By.xpath("//div[@class = 'user-wrapper search-user-block']"));
@@ -48,7 +50,7 @@ public class ShopRegisterTests extends BaseTestClass {
     }
 
     @Test
-    public void missingPassword(){
+    public void missingPassword() {
         driver.get("https://testare-automata.practica.tech/shop/");
 
         WebElement regButton = driver.findElement(By.xpath("//div[@class = 'user-wrapper search-user-block']"));
@@ -67,7 +69,7 @@ public class ShopRegisterTests extends BaseTestClass {
     }
 
     @Test
-    public void missingFirstName(){
+    public void missingFirstName() {
         driver.get("https://testare-automata.practica.tech/shop/");
 
         WebElement regButton = driver.findElement(By.xpath("//div[@class = 'user-wrapper search-user-block']"));
@@ -86,7 +88,7 @@ public class ShopRegisterTests extends BaseTestClass {
     }
 
     @Test
-    public void missingLastName(){
+    public void missingLastName() {
         driver.get("https://testare-automata.practica.tech/shop/");
 
         WebElement regButton = driver.findElement(By.xpath("//div[@class = 'user-wrapper search-user-block']"));
@@ -105,7 +107,7 @@ public class ShopRegisterTests extends BaseTestClass {
     }
 
     @Test
-    public void missingPhoneNumber(){
+    public void missingPhoneNumber() {
         driver.get("https://testare-automata.practica.tech/shop/");
 
         WebElement regButton = driver.findElement(By.xpath("//div[@class = 'user-wrapper search-user-block']"));
@@ -124,7 +126,7 @@ public class ShopRegisterTests extends BaseTestClass {
     }
 
     @Test
-    public void emailAlreadyUsed(){
+    public void emailAlreadyUsed() {
         driver.get("https://testare-automata.practica.tech/shop/");
 
         WebElement regButton = driver.findElement(By.xpath("//div[@class = 'user-wrapper search-user-block']"));
@@ -144,7 +146,7 @@ public class ShopRegisterTests extends BaseTestClass {
     }
 
     @Test
-    public void weakPassword(){
+    public void weakPassword() {
         driver.get("https://testare-automata.practica.tech/shop/");
 
         WebElement regButton = driver.findElement(By.xpath("//div[@class = 'user-wrapper search-user-block']"));
@@ -161,7 +163,54 @@ public class ShopRegisterTests extends BaseTestClass {
         WebElement registerButton = driver.findElement(By.name("register"));
         Assert.assertFalse(registerButton.isEnabled());
 
-        WebElement weakPasswordMessage = driver.findElement(By.className("woocommerce-password-strength"));
-        Assert.assertEquals("Very weak - Please enter a stronger password.", weakPasswordMessage.getText());
+        WebElement message = driver.findElement(By.className("woocommerce-password-strength"));
+        Assert.assertEquals("Very weak - Please enter a stronger password.", message.getText());
+    }
+
+    @Test
+    public void passwordStrength() {
+        driver.get("https://testare-automata.practica.tech/shop/");
+        WebElement regButton = driver.findElement(By.xpath("//div[@class = 'user-wrapper search-user-block']"));
+        regButton.click();
+
+        driver.findElement(By.id("reg_password")).sendKeys("12");
+        WebDriverWait wait = new WebDriverWait(driver, 2);
+        wait.until(ExpectedConditions.textToBe(By.className("woocommerce-password-strength"), "Very weak - Please enter a stronger password."));
+
+        WebElement message = driver.findElement(By.className("woocommerce-password-strength"));
+        Assert.assertEquals("Very weak - Please enter a stronger password.", message.getText());
+
+        WebElement registerButton = driver.findElement(By.name("register"));
+        Assert.assertFalse(registerButton.isEnabled());
+
+        driver.findElement(By.id("reg_password")).sendKeys("345@");
+        wait = new WebDriverWait(driver, 2);
+        wait.until(ExpectedConditions.textToBe(By.className("woocommerce-password-strength"), "Weak - Please enter a stronger password."));
+
+        message = driver.findElement(By.className("woocommerce-password-strength"));
+        Assert.assertEquals("Weak - Please enter a stronger password.", message.getText());
+
+        registerButton = driver.findElement(By.name("register"));
+        Assert.assertFalse(registerButton.isEnabled());
+
+        driver.findElement(By.id("reg_password")).sendKeys("gmail");
+        wait = new WebDriverWait(driver, 2);
+        wait.until(ExpectedConditions.textToBe(By.className("woocommerce-password-strength"), "Medium"));
+
+        message = driver.findElement(By.className("woocommerce-password-strength"));
+        Assert.assertEquals("Medium", message.getText());
+
+        registerButton = driver.findElement(By.name("register"));
+        Assert.assertTrue(registerButton.isEnabled());
+
+        driver.findElement(By.id("reg_password")).sendKeys("12345@gmail.com");
+        wait = new WebDriverWait(driver, 2);
+        wait.until(ExpectedConditions.textToBe(By.className("woocommerce-password-strength"), "Strong"));
+
+        message = driver.findElement(By.className("woocommerce-password-strength"));
+        Assert.assertEquals("Strong", message.getText());
+
+        registerButton = driver.findElement(By.name("register"));
+        Assert.assertTrue(registerButton.isEnabled());
     }
 }
