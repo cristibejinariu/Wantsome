@@ -23,14 +23,13 @@ public class ShopCartTests extends BaseTestClass {
                 .build()
                 .perform();
 
-
-
         driver.findElement(By.className("add_to_cart_button")).click();
 
         WebElement cart = driver.findElement(By.className("cart-wrapper"));
         actions.moveToElement(cart)
                 .build().
                 perform();
+
         Assert.assertEquals("70,00 lei", driver.findElement(By.className("woocommerce-Price-amount")).getText());
     }
 }
